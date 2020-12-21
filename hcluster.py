@@ -58,12 +58,15 @@ for row in keywordsParsed:
         # else:
         #     distinctKeywordEmbeddings.append(embeddings_dict[cell])
 keyword_embeddings = []
+keywords = []
 for c in corpus:
     if c in embeddings_dict:
+        keywords.append(c)
         keyword_embeddings.append(embeddings_dict[c])
+keywords = np.array(keywords)
 keyword_embeddings = np.array(keyword_embeddings)
-print(keyword_embeddings)
-print(keyword_embeddings.shape)
+# print(keyword_embeddings)
+# print(keyword_embeddings.shape)
 
 
 X = keyword_embeddings
@@ -80,32 +83,37 @@ from sklearn.cluster import AgglomerativeClustering
 hc = AgglomerativeClustering(n_clusters = 20, affinity = 'euclidean', linkage = 'ward')
 y_hc = hc.fit_predict(X)
 
+print(keywords[y_hc == 0])
+
+
+
+
 # Visualising the clusters
-plt.scatter(X[y_hc == 0, 0], X[y_hc == 0, 1], s = 100, label = 'Cluster 1')
-plt.scatter(X[y_hc == 1, 0], X[y_hc == 1, 1], s = 100, label = 'Cluster 2')
-plt.scatter(X[y_hc == 2, 0], X[y_hc == 2, 1], s = 100, label = 'Cluster 3')
-plt.scatter(X[y_hc == 3, 0], X[y_hc == 3, 1], s = 100, label = 'Cluster 4')
-plt.scatter(X[y_hc == 4, 0], X[y_hc == 4, 1], s = 100, label = 'Cluster 5')
-plt.scatter(X[y_hc == 5, 0], X[y_hc == 5, 1], s = 100, label = 'Cluster 6')
-plt.scatter(X[y_hc == 6, 0], X[y_hc == 6, 1], s = 100, label = 'Cluster 7')
-plt.scatter(X[y_hc == 7, 0], X[y_hc == 7, 1], s = 100, label = 'Cluster 8')
-plt.scatter(X[y_hc == 8, 0], X[y_hc == 8, 1], s = 100, label = 'Cluster 9')
-plt.scatter(X[y_hc == 9, 0], X[y_hc == 9, 1], s = 100, label = 'Cluster 10')
-plt.scatter(X[y_hc == 10, 0], X[y_hc == 10, 1], s = 100, label = 'Cluster 11')
-plt.scatter(X[y_hc == 11, 0], X[y_hc == 11, 1], s = 100, label = 'Cluster 12')
-plt.scatter(X[y_hc == 12, 0], X[y_hc == 12, 1], s = 100, label = 'Cluster 13')
-plt.scatter(X[y_hc == 13, 0], X[y_hc == 13, 1], s = 100, label = 'Cluster 14')
-plt.scatter(X[y_hc == 14, 0], X[y_hc == 14, 1], s = 100, label = 'Cluster 15')
-plt.scatter(X[y_hc == 15, 0], X[y_hc == 15, 1], s = 100, label = 'Cluster 16')
-plt.scatter(X[y_hc == 16, 0], X[y_hc == 16, 1], s = 100, label = 'Cluster 17')
-plt.scatter(X[y_hc == 17, 0], X[y_hc == 17, 1], s = 100, label = 'Cluster 18')
-plt.scatter(X[y_hc == 18, 0], X[y_hc == 18, 1], s = 100, label = 'Cluster 19')
-plt.scatter(X[y_hc == 19, 0], X[y_hc == 19, 1], s = 100, label = 'Cluster 20')
-plt.title('Clusters of customers')
-plt.xlabel('Annual Income (k$)')
-plt.ylabel('Spending Score (1-100)')
-plt.legend()
-plt.show()
+# plt.scatter(X[y_hc == 0, 0], X[y_hc == 0, 1], s = 100, label = 'Cluster 1')
+# plt.scatter(X[y_hc == 1, 0], X[y_hc == 1, 1], s = 100, label = 'Cluster 2')
+# plt.scatter(X[y_hc == 2, 0], X[y_hc == 2, 1], s = 100, label = 'Cluster 3')
+# plt.scatter(X[y_hc == 3, 0], X[y_hc == 3, 1], s = 100, label = 'Cluster 4')
+# plt.scatter(X[y_hc == 4, 0], X[y_hc == 4, 1], s = 100, label = 'Cluster 5')
+# plt.scatter(X[y_hc == 5, 0], X[y_hc == 5, 1], s = 100, label = 'Cluster 6')
+# plt.scatter(X[y_hc == 6, 0], X[y_hc == 6, 1], s = 100, label = 'Cluster 7')
+# plt.scatter(X[y_hc == 7, 0], X[y_hc == 7, 1], s = 100, label = 'Cluster 8')
+# plt.scatter(X[y_hc == 8, 0], X[y_hc == 8, 1], s = 100, label = 'Cluster 9')
+# plt.scatter(X[y_hc == 9, 0], X[y_hc == 9, 1], s = 100, label = 'Cluster 10')
+# plt.scatter(X[y_hc == 10, 0], X[y_hc == 10, 1], s = 100, label = 'Cluster 11')
+# plt.scatter(X[y_hc == 11, 0], X[y_hc == 11, 1], s = 100, label = 'Cluster 12')
+# plt.scatter(X[y_hc == 12, 0], X[y_hc == 12, 1], s = 100, label = 'Cluster 13')
+# plt.scatter(X[y_hc == 13, 0], X[y_hc == 13, 1], s = 100, label = 'Cluster 14')
+# plt.scatter(X[y_hc == 14, 0], X[y_hc == 14, 1], s = 100, label = 'Cluster 15')
+# plt.scatter(X[y_hc == 15, 0], X[y_hc == 15, 1], s = 100, label = 'Cluster 16')
+# plt.scatter(X[y_hc == 16, 0], X[y_hc == 16, 1], s = 100, label = 'Cluster 17')
+# plt.scatter(X[y_hc == 17, 0], X[y_hc == 17, 1], s = 100, label = 'Cluster 18')
+# plt.scatter(X[y_hc == 18, 0], X[y_hc == 18, 1], s = 100, label = 'Cluster 19')
+# plt.scatter(X[y_hc == 19, 0], X[y_hc == 19, 1], s = 100, label = 'Cluster 20')
+# plt.title('Clusters of customers')
+# plt.xlabel('Annual Income (k$)')
+# plt.ylabel('Spending Score (1-100)')
+# plt.legend()
+# plt.show()
 
 
 
