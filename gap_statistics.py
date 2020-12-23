@@ -1,0 +1,2 @@
+# should try this as well 
+# https://www.google.com/search?rlz=1C1CHBF_en-GBAU923AU923&sxsrf=ALeKk02QixHhsW8U2_oETdpZ_Bx1-sKNTw%3A1608705769875&ei=6ebiX9z-NLuG4-EPqeS94Ao&q=gap+statistic+k+means+clustering&oq=gap+statistic+k+means+clustering&gs_lcp=CgZwc3ktYWIQAzIGCAAQCBAeOgQIABBHUIhmWKJtYP1uaABwAngAgAHYAYgBtQuSAQUwLjUuM5gBAKABAaoBB2d3cy13aXrIAQjAAQE&sclient=psy-ab&ved=0ahUKEwicl9j_v-PtAhU7wzgGHSlyD6wQ4dUDCA0&uact=5
