@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 wv = WordVectorizer()
 X = wv.generate()
 SSE = []
-cluster_range = [x for x in range(40,60)]
+cluster_range = [5*x for x in range(1,40)]
 for cluster in cluster_range:
     kmeans = KMeans(n_jobs = -1, n_clusters = cluster, init = 'k-means++')
     kmeans.fit(X)
