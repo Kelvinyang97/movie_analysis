@@ -9,7 +9,7 @@ wv = WordVectorizer()
 X = wv.generate()
 SSE = []
 cluster_row_indices = [[] for _ in range(NUM_CLUSTER)]
-kmeans = KMeans(n_clusters = NUM_CLUSTER, init = 'k-means++')
+kmeans = KMeans(n_clusters = NUM_CLUSTER, init = 'k-means++', random_state=42)
 kmeans.fit(X)
 # print(cluster_row_indices)
 # print(kmeans.labels_)
@@ -22,7 +22,6 @@ for cluster_indices in cluster_row_indices:
     print(X_in_cluster.shape)
     centers.append(np.mean(X_in_cluster, axis=0))
 centers = np.array(centers)
-cluster_0_embeddings = X[cluster_row_indices[0]]
 
 # print(centers)
 # print(centers.shape)
