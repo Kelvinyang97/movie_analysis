@@ -1,0 +1,6 @@
+1. use movie keywords.csv and filter out words with more than 3 words
+2. get the mean vector of these keywords
+    2.1 use kNN with corpus of these keywords and query vectors as the 6k vectors, 
+        compile them as "popularity votes" for these keywords
+    2.2 pick n keywords as the cluster centers
+3. allocate the query keywords based on their top 1 nearest neighbor to these n cluster centers

@@ -41,4 +41,13 @@ class WordVectorizer():
                 keyword_embeddings.append(embeddings_dict[c])
         keywords = np.array(keywords)
         keyword_embeddings = np.array(keyword_embeddings)
-        return keyword_embeddings
+        return keywords, keyword_embeddings
+    def getEmbeddingDict(self, dict_dataset='datasets/glove6b/glove.6B.50d.txt'):
+        embeddings_dict = {}
+        with open(dict_dataset, 'r') as f:
+            for line in f:
+                values = line.split()
+                word = values[0]
+                vector = np.asarray(values[1:], "float32")
+                embeddings_dict[word] = vector
+        return embeddings_dict

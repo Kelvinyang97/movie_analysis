@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 NUM_CLUSTER = 50
 wv = WordVectorizer()
-X = wv.generate()
+words, X = wv.generate()
 SSE = []
 cluster_row_indices = [[] for _ in range(NUM_CLUSTER)]
 kmeans = KMeans(n_clusters = NUM_CLUSTER, init = 'k-means++', random_state=42)
