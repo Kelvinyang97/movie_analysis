@@ -68,14 +68,23 @@ class VoteTopKCenters():
         neigh.fit(self.top_k_embeddings)
         nearest_word_idx = neigh.kneighbors(X, return_distance=False)
         nearest_word_idx = nearest_word_idx.flatten()
+        self.words = words
+        self.nearest_word_idx = nearest_word_idx
         words_by_cluster = [[] for _ in range(len(self.top_k_words))]
         for i, cluster_idx in enumerate(nearest_word_idx):
             words_by_cluster[cluster_idx].append(words[i])
         self.words_by_cluster = words_by_cluster
         return self.words_by_cluster
+    
+    def get_word_cluster_dict(self):
+        self.dict = {}
+        for i, w in enumerate(self.words):
+            self.dict[w] = self.nearest_word_idx[i]
+        return self.dict
 
 
 # v = VoteTopKCenters()
 # keywords, keyword_embeddings = v.get_embeddings('datasets/movie-keywords.csv')
 # top_k_words, top_k_embeddings = v.get_top_k_voted(50, 5)
 # words_by_cluster = v.cluster_words()
+# word_cluster_dict = v.get_word_cluster_dict()
