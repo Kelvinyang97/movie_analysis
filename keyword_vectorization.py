@@ -66,6 +66,29 @@ class WordVectorizer():
             for cell in row:
                 keywordsParsed[idx].append(cell['name'])
         return keywordsParsed
-
-wv = WordVectorizer()
-print(wv.keywordsAll())
+    def genresAll(self, path='datasets/Movies-3200-tru.csv'):
+        dataset = pd.read_csv(path)
+        X = dataset.iloc[:, :-1].values
+        keywords = X[:,1]
+        json_vec = np.vectorize(json.loads)
+        keywords = json_vec(keywords)
+        keywordsParsed = []
+        for idx, row in enumerate(keywords):
+            keywordsParsed.append(list())
+            for cell in row:
+                keywordsParsed[idx].append(cell['name'])
+        return keywordsParsed
+    def genresAllBinarize(self, path='datasets/Movies-3200-tru.csv'):
+        dataset = pd.read_csv(path)
+        X = dataset.iloc[:, :-1].values
+        keywords = X[:,1]
+        json_vec = np.vectorize(json.loads)
+        keywords = json_vec(keywords)
+        keywordsParsed = []
+        for idx, row in enumerate(keywords):
+            keywordsParsed.append(list())
+            for cell in row:
+                keywordsParsed[idx].append(cell['name'])
+        from sklearn.preprocessing import MultiLabelBinarizer
+        mlb = MultiLabelBinarizer()
+        return np.array(mlb.fit_transform(keywordsParsed))

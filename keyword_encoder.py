@@ -22,7 +22,7 @@ class KeywordEncoder():
                     else:
                         columnEncodings[x,word_cluster_dict[word]] = 1
         df = pd.DataFrame(columnEncodings)
-        df.to_csv('encoding.csv')
+        df.to_csv('datasets/encoding.csv', index=False)
         return columnEncodings
 ke = KeywordEncoder()
 ke.generateEncodedColumn()
